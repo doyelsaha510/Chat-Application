@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@drawable/chatback">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/appbarlayout">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar"
+            android:background="@color/colorPrimary"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/profile_image"
+                android:src="@drawable/defaultimage"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                app:civ_border_width="10dp"
+                app:civ_border_color="#05df29"
+                android:id="@+id/img_on"
+                android:src="@mipmap/ic_launcher"
+                android:layout_below="@+id/username"
+               android:layout_marginTop="28dp"
+                android:layout_toRightOf="@+id/profile_image"
+                android:layout_toEndOf="@+id/profile_image"
+                tools:ignore="RtlHardcoded"
+                android:visibility="gone"
+                />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                app:civ_border_width="10dp"
+                app:civ_border_color="#bfbfbf"
+                android:id="@+id/img_off"
+                android:src="@mipmap/ic_launcher"
+                android:layout_below="@+id/username"
+                android:layout_marginStart="28dp"
+                android:layout_toRightOf="@+id/profile_image"
+                android:layout_toEndOf="@+id/profile_image"
+                tools:ignore="RtlHardcoded"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/username"
+                android:textSize="18sp"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:layout_marginStart="25dp"/>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/msg_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/appbarlayout"
+        android:layout_above="@+id/chat_linear_layout">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <RelativeLayout
+        android:id="@+id/chat_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/background_light"
+        android:orientation="horizontal"
+        >
+
+
+        <!--<ImageButton
+            android:id="@+id/send_files_btn"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:src="@drawable/send_files"
+            android:layout_alignParentStart="true"
+            android:backgroundTint="@android:color/white"
+            />
+-->
+
+        <EditText
+            android:id="@+id/input_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Type message here..."
+            android:padding="15dp"
+            android:maxLines="5"
+            android:layout_toStartOf="@+id/send_btn"
+            />
+
+
+        <ImageButton
+            android:id="@+id/send_btn"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_send"
+            android:layout_alignParentEnd="true"
+            android:foregroundGravity="center"
+            android:backgroundTint="@android:color/white"
+            />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
