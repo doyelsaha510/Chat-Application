@@ -120,6 +120,7 @@ public class ProfileActivity extends AppCompatActivity {
                                         } else if (req_type.equals("received")) {
                                             current_State = "request_received";
                                             sendfq.setText("Accept Friend Friend");
+                                            mcross.setVisibility(View.VISIBLE);
                                             declinefq.setVisibility(View.VISIBLE);
                                             declinefq.setEnabled(true);
 

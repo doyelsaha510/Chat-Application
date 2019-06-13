@@ -29,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference RootRef;
     private String currentUserID;
 
+    public static final String CHANNEL_ID="MyChatApp";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -163,4 +166,5 @@ public class MainActivity extends AppCompatActivity {
             updateUserStatus("online");
         }
     }
+
 }

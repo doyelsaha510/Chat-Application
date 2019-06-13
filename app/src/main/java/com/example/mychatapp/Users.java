@@ -4,15 +4,24 @@ public class Users {
     public String name;
     public String image;
     public String status;
-
     public String id;
+    private String token;
 
 
-    public Users(String name, String image, String status, String id) {
+    public Users(String name, String image, String status, String id,String token) {
         this.name = name;
         this.image = image;
         this.status = status;
         this.id = id;
+        this.token=token;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String getId() {

@@ -22,7 +22,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -50,6 +52,27 @@ public class RegisterActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final String[] token = new String[1];
+
+                FirebaseMessaging.getInstance().subscribeToTopic("request_notification");
+                FirebaseInstanceId.getInstance().getInstanceId()
+                        .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                                if (!task.isSuccessful()) {
+                                    //Log.w(TAG, "getInstanceId failed", task.getException());
+                                    return;
+                                }
+
+                                // Get new Instance ID token
+                                token[0] = task.getResult().getToken().toString();
+
+                                // Log and toast
+                                //String msg = getString(R.string.msg_token_fmt, token);
+                                Log.i("Token", token[0]);
+                                //Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                            }
+                        });
                 String uemailID = emailId.getText().toString();
                 String upaswd = passwd.getText().toString();
                 String uname = name.getText().toString();
@@ -59,7 +82,7 @@ public class RegisterActivity extends AppCompatActivity {
                     progress.setMessage("please wait while we create ur account");
                     progress.setCanceledOnTouchOutside(false);
                     progress.show();
-                    register_user(uemailID, upaswd, uname);
+                    register_user(uemailID, upaswd, uname,token);
                 }
                 else
                 {
@@ -72,7 +95,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    private void register_user(String uemailID, String upaswd, final String uname) {
+    private void register_user(String uemailID, String upaswd, final String uname, final String[] token) {
         mAuth.createUserWithEmailAndPassword(uemailID, upaswd)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -89,7 +112,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     userMap.put("name",uname);
                                     userMap.put("status","hello!!my name is "+uname);
                                     userMap.put("image","default");
-
+                                    userMap.put("token", Arrays.toString(token));
                                     uDatabase.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {

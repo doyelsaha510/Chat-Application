@@ -63,7 +63,7 @@ public class settings extends AppCompatActivity {
                 String name = dataSnapshot.child("name").getValue().toString();
                 String image = dataSnapshot.child("image").getValue().toString();
                 String status = dataSnapshot.child("status").getValue().toString();
-                String thumb_image = dataSnapshot.child("thumb_image").getValue().toString();
+
                 uname.setText(name);
                 ustatus.setText(status);
                 if (!image.equals("default")) {
