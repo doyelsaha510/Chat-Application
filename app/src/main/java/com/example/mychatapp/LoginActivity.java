@@ -6,6 +6,7 @@ import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.Toolbar;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -35,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     private FirebaseAuth mAuth;
     private DatabaseReference userreference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +61,11 @@ public class LoginActivity extends AppCompatActivity {
                 String upaswd = passwd.getText().toString();
 
                 if (!TextUtils.isEmpty(uemailID) && !TextUtils.isEmpty(upaswd)) {
-                    progressDialog.setTitle("Login user");
-                    progressDialog.setMessage("pls wait while we start ur account");
+                   // progressDialog.setTitle("Login user");
+                    progressDialog.setMessage("Login... ");
+                    progressDialog.setIndeterminate(true);
+                    progressDialog.setIcon(R.drawable.icon);
+                    progressDialog.setIndeterminateDrawable(getDrawable(R.drawable.progress_icon));
                     progressDialog.setCanceledOnTouchOutside(false);
                     progressDialog.show();
 
@@ -71,6 +77,11 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     private void loginuser(String uemailID, String upaswd) {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,41 +7,46 @@
     tools:context=".startActivity"
     android:background="@drawable/background">
 
-    <LinearLayout
+    <ImageView
+        android:layout_width="140dp"
+        android:layout_height="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:src="@drawable/icon"
+        android:id="@+id/icon"
+        />
+
+    <RelativeLayout
+        android:id="@+id/btns"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/icon"
-            android:layout_margin="50dp"
-            />
+        android:layout_below="@+id/icon"
+        android:layout_marginTop="121dp">
 
         <Button
             android:id="@+id/btnnewacc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="need a new account"
+            android:layout_alignParentStart="true"
             android:background="@drawable/btnstyle"
-            android:layout_margin="20dp"
-            android:layout_gravity="center_horizontal"
-            android:textColor="#153e7e"/>
+
+            android:text="Sign Up"
+            android:textColor="#153e7e" />
+
         <Button
             android:id="@+id/btnlogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="already have an account"
+            android:layout_alignParentEnd="true"
             android:background="@drawable/abtnstyle"
-            android:layout_margin="20dp"
-            android:layout_gravity="center_horizontal"
-            android:textColor="#153e7e"/>
+            android:text="Sign in"
+
+            android:textColor="#153e7e" />
+
+    </RelativeLayout>
 
 
 
-    </LinearLayout>
 
 
-</ScrollView>
+</RelativeLayout>

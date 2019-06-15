@@ -53,6 +53,7 @@
             android:textColor="#153e7e"
             android:id="@+id/forget"/>
         <!--Sign up button-->
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_login"
             android:layout_width="fill_parent"
