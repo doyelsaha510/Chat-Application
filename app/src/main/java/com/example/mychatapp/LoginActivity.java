@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -31,12 +32,13 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
-    EditText emailId, passwd;
-    Button btnlogin;
+    TextInputEditText emailId, passwd;
+    //Button btnlogin;
     TextView forgot_pass;
     ProgressDialog progressDialog;
     private FirebaseAuth mAuth;
     private DatabaseReference userreference;
+    MaterialButton btnlogin;
 
 
     @Override
@@ -51,6 +53,7 @@ public class LoginActivity extends AppCompatActivity {
         emailId = findViewById(R.id.input_email);
         passwd = findViewById(R.id.input_password);
         btnlogin = findViewById(R.id.btn_login);
+
         progressDialog = new ProgressDialog(this);
 
 
@@ -61,7 +64,6 @@ public class LoginActivity extends AppCompatActivity {
                 String upaswd = passwd.getText().toString();
 
                 if (!TextUtils.isEmpty(uemailID) && !TextUtils.isEmpty(upaswd)) {
-                   // progressDialog.setTitle("Login user");
                     progressDialog.setMessage("Login... ");
                     progressDialog.setIndeterminate(true);
                     progressDialog.setIcon(R.drawable.icon);
@@ -93,10 +95,12 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             String online_user_id = mAuth.getCurrentUser().getUid();
                             progressDialog.dismiss();
+                            Toast.makeText(LoginActivity.this, "Successfully Logged in", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
                             finish();
+
 
 
                         } else {

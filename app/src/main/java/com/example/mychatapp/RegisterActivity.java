@@ -6,7 +6,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
+
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +18,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,8 +34,8 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText emailId, passwd, name;
-    Button btnSignUp;
+    TextInputEditText emailId, passwd, name;
+    MaterialButton btnSignUp;
     private FirebaseAuth mAuth;
 
     ProgressDialog progress;
@@ -49,6 +54,29 @@ public class RegisterActivity extends AppCompatActivity {
 
         progress = new ProgressDialog(this);
         mAuth = FirebaseAuth.getInstance();
+        passwd.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (s.length() > 10) {
+                    passwd.setError("Max character length is " + 10);
+
+                }
+                else
+                    passwd.setError(null);
+
+            }
+        });
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,17 +104,20 @@ public class RegisterActivity extends AppCompatActivity {
                 String uemailID = emailId.getText().toString();
                 String upaswd = passwd.getText().toString();
                 String uname = name.getText().toString();
-                if (!TextUtils.isEmpty(uname) && !TextUtils.isEmpty(uemailID) && !TextUtils.isEmpty(upaswd)) {
+                if (!TextUtils.isEmpty(uname) && !TextUtils.isEmpty(uemailID) && (!TextUtils.isEmpty(upaswd)&& upaswd.length()<=10)) {
 
-                    progress.setTitle("Registering user");
-                    progress.setMessage("please wait while we create ur account");
+                    progress.setMessage("Registering... ");
+                    progress.setIndeterminate(true);
+                    progress.setIcon(R.drawable.icon);
+                    progress.setIndeterminateDrawable(getDrawable(R.drawable.progress_icon));
                     progress.setCanceledOnTouchOutside(false);
                     progress.show();
                     register_user(uemailID, upaswd, uname,token);
+
                 }
                 else
                 {
-                    Toast.makeText(RegisterActivity.this, "All fields are necessary", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "All fields are necessary or check password limit", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -119,7 +150,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                                             if(task.isSuccessful())
                                             {
-
+                                                Toast.makeText(RegisterActivity.this, "WELCOME", Toast.LENGTH_SHORT).show();
                                                 progress.dismiss();
                                                 // Sign in success, update UI with the signed-in user's information
                                                 Intent mainIntent = new Intent(RegisterActivity.this, MainActivity.class);

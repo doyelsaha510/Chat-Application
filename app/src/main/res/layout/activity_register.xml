@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
     android:fitsSystemWindows="true"
-    tools:context=".RegisterActivity">
+    tools:context=".RegisterActivity"
+    android:background="@drawable/backgroundn">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,60 +16,90 @@
         android:padding="15dp">
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="8dp"
+            android:hint="Name"
+            android:textColorHint="#000000"
+            app:boxStrokeColor="#000000"
+            app:hintAnimationEnabled="true">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/name"
-                android:inputType="textCapWords"
-                android:textColorHint="#000000" />
+                android:inputType="textEmailAddress"
+                android:maxLines="1" />
+
         </com.google.android.material.textfield.TextInputLayout>
         <!--Email Label-->
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="8dp"
+            android:hint="Email"
+            android:textColorHint="#000000"
+            app:boxStrokeColor="#000000"
+            app:hintAnimationEnabled="true"
+            >
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
                 android:inputType="textEmailAddress"
-                android:textColorHint="#000000" />
+                android:maxLines="1" />
+
         </com.google.android.material.textfield.TextInputLayout>
         <!--Password Label-->
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="8dp"
+            android:hint="Password"
+            android:textColorHint="#000000"
+            app:hintAnimationEnabled="true"
+            app:passwordToggleEnabled="true"
+            app:errorEnabled="true"
+            app:errorTextAppearance="@color/colorAccent"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:counterOverflowTextAppearance="@style/CounterOverFlow">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
                 android:inputType="textPassword"
-                android:textColorHint="#000000" />
+                android:maxLines="1" />
+
         </com.google.android.material.textfield.TextInputLayout>
         <!--Sign up button-->
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_signup"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/btnstyle"
-            android:padding="12dp"
-            android:text="@string/create_account"
-            android:textColor="#153e7e" />
+        <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_signup"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#8e356e"
+        android:text="Register"
+        android:textAlignment="center"
+        android:theme="@style/Theme.MaterialComponents.NoActionBar"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/done"
+        app:iconGravity="textStart"
+        app:iconPadding="20dp"
+        app:iconSize="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:rippleColor="#fa78c4" />
 
 
     </LinearLayout>
