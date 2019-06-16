@@ -2,13 +2,22 @@ package com.example.mychatapp;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
+
+import androidx.annotation.NonNull;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -23,13 +32,14 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     Toolbar mToolBar;
-     ViewPager viewPager;
-     SectionPageAdapter sectionPageAdapter;
-     TabLayout tabLayout;
+    ViewPager viewPager;
+    SectionPageAdapter sectionPageAdapter;
+    TabLayout tabLayout;
+    TextView retext, chtext, frtext;
     private DatabaseReference RootRef;
-    private String currentUserID;
-
-    public static final String CHANNEL_ID="MyChatApp";
+    //String currentUserID;
+    BottomNavigationView bottomNavigationView;
+    public static final String CHANNEL_ID = "MyChatApp";
 
 
     @Override
@@ -37,20 +47,92 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
-       // currentUserID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
+        //currentUserID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
         RootRef = FirebaseDatabase.getInstance().getReference();
         mToolBar = findViewById(R.id.mainpage_toolbar);
         setSupportActionBar(mToolBar);
         Objects.requireNonNull(getSupportActionBar()).setTitle("MyChatApp");
 
-
+        retext = findViewById(R.id.requesttab);
+        chtext = findViewById(R.id.chattab);
+        frtext = findViewById(R.id.friendtab);
         viewPager = findViewById(R.id.viewpager);
         sectionPageAdapter = new SectionPageAdapter(getSupportFragmentManager());
         viewPager.setAdapter(sectionPageAdapter);
+        retext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewPager.setCurrentItem(0);
+            }
+        });
+        chtext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewPager.setCurrentItem(1);
+            }
+        });
+        frtext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewPager.setCurrentItem(2);
+            }
+        });
 
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-        tabLayout = findViewById(R.id.main_tabs);
-        tabLayout.setupWithViewPager(viewPager);
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                changeTabs(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        // tabLayout = findViewById(R.id.main_tabs);
+        //tabLayout.setupWithViewPager(viewPager);
+
+    }
+
+    private void changeTabs(int position) {
+        if (position == 0) {
+            retext.setTextColor(getColor(R.color.colorAccent));
+            retext.setTextSize(22);
+
+            chtext.setTextColor(getColor(R.color.colorPrimary));
+            chtext.setTextSize(18);
+
+            frtext.setTextColor(getColor(R.color.colorPrimary));
+            frtext.setTextSize(18);
+        }
+        if (position == 1) {
+            retext.setTextColor(getColor(R.color.colorPrimary));
+            retext.setTextSize(18);
+
+            chtext.setTextColor(getColor(R.color.colorAccent));
+            chtext.setTextSize(22);
+
+            frtext.setTextColor(getColor(R.color.colorPrimary));
+            frtext.setTextSize(18);
+        }
+        if (position == 2) {
+            retext.setTextColor(getColor(R.color.colorPrimary));
+            retext.setTextSize(18);
+
+            chtext.setTextColor(getColor(R.color.colorPrimary));
+            chtext.setTextSize(18);
+
+            frtext.setTextColor(getColor(R.color.colorAccent));
+            frtext.setTextSize(22);
+
+        }
+
 
     }
 
@@ -62,9 +144,7 @@ public class MainActivity extends AppCompatActivity {
         // updateUI(currentUser);
         if (currentUser == null) {
             sendTostart();
-        }
-        else
-        {
+        } else {
             updateUserStatus("online");
         }
     }
@@ -89,20 +169,20 @@ public class MainActivity extends AppCompatActivity {
             updateUserStatus("offline");
             FirebaseAuth.getInstance().signOut();
             sendTostart();
-        } else if (item.getItemId() == R.id.settings) {
-            Intent intent = new Intent(MainActivity.this, settings.class);
+        } else if (item.getItemId() == R.id.userProfile) {
+            Intent intent = new Intent(MainActivity.this, userProfile.class);
             startActivity(intent);
-        }
-        else
-        {
-            Intent uintent=new Intent(MainActivity.this,allusers.class);
+        } else if (item.getItemId() == R.id.alluser) {
+            Intent uintent = new Intent(MainActivity.this, allusers.class);
+            startActivity(uintent);
+        } else {
+            Intent uintent = new Intent(MainActivity.this, settings.class);
             startActivity(uintent);
         }
         return true;
     }
 
-    private void updateUserStatus(String state)
-    {
+    private void updateUserStatus(String state) {
         String saveCurrentTime, saveCurrentDate;
 
         Calendar calendar = Calendar.getInstance();
@@ -124,25 +204,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop()
-    {
+    protected void onStop() {
         super.onStop();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null)
-        {
+        if (currentUser != null) {
             updateUserStatus("offline");
         }
     }
 
 
-
     @Override
-    protected void onDestroy()
-    {
+    protected void onDestroy() {
         super.onDestroy();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null)
-        {
+        if (currentUser != null) {
             updateUserStatus("offline");
         }
     }
@@ -151,8 +226,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null)
-        {
+        if (currentUser != null) {
             updateUserStatus("offline");
         }
     }
@@ -161,10 +235,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null)
-        {
+        if (currentUser != null) {
             updateUserStatus("online");
         }
     }
+
 
 }

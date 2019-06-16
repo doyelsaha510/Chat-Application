@@ -1,29 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:padding="8dp">
 
-    <RelativeLayout
-        android:layout_width="300dp"
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/defaultimage"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/show_message"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        >
+        android:background="@drawable/background_right"
+        android:padding="8dp"
+        android:text="hello"
+        android:textSize="18sp" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/profile_image"
-            android:src="@drawable/defaultimage"
-            android:visibility="gone"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/background_right"
-            android:text="hello"
-            android:layout_alignParentEnd="true"
-            android:id="@+id/show_message"
-            android:textSize="18sp"
-            android:padding="8dp"/>
+    <TextView
+        android:id="@+id/text_msg_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/show_message"
+        android:layout_toLeftOf="@+id/show_message"
+        android:text="hello"
+        android:textSize="12sp" />
 
-    </RelativeLayout>
+
 </RelativeLayout>

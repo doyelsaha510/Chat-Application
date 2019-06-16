@@ -1,19 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/background">
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/appbar"
+        android:background="#e39ff6">
 
         <include layout="@layout/app_bar_layout" android:id="@+id/mainpage_toolbar"/>
 
     </com.google.android.material.appbar.AppBarLayout>
-    <com.google.android.material.tabs.TabLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/main_tabs"
+        android:layout_below="@+id/appbar">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Requests"
+            android:id="@+id/requesttab"
+            android:padding="10dp"
+            android:textSize="22sp"
+            android:textColor="@color/colorAccent"
+            android:layout_marginEnd="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chats"
+            android:id="@+id/chattab"
+            android:padding="10dp"
+            android:textSize="18sp"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginEnd="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Friends"
+            android:id="@+id/friendtab"
+            android:padding="10dp"
+            android:textSize="18sp"
+            android:textColor="@color/colorPrimary"/>
+    </LinearLayout>
+    <!--<com.google.android.material.tabs.TabLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/main_tabs"
@@ -21,12 +57,14 @@
         android:background="@color/colorPrimary">
 
     </com.google.android.material.tabs.TabLayout>
-
+-->
     <androidx.viewpager.widget.ViewPager
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/viewpager">
+        android:id="@+id/viewpager"
+        android:layout_below="@+id/main_tabs"
+        android:layout_marginEnd="10dp">
 </androidx.viewpager.widget.ViewPager>
 
 
-</LinearLayout>
+</RelativeLayout>

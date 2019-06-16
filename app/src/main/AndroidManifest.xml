@@ -5,9 +5,10 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".Offline_view"
         android:allowBackup="true"
         android:appComponentFactory="android:android.support.v4.app.CoreComponentFactory"
         android:icon="@mipmap/ic_launcher"
@@ -17,8 +18,8 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:appComponentFactory"
-        tools:targetApi="p"
-        android:name=".Offline_view">
+        tools:targetApi="p">
+        <activity android:name=".settings"></activity>
         <activity android:name=".ProfileActivity">
             <intent-filter>
                 <action android:name="com.example.mychatapp_TARGET_NOTIFICATION" />
@@ -28,15 +29,11 @@
         </activity>
         <activity
             android:name=".allusers"
-            android:parentActivityName=".MainActivity">
-
-        </activity>
+            android:parentActivityName=".MainActivity"></activity>
         <activity
             android:name=".statusactivity"
-            android:parentActivityName=".settings">
-
-        </activity>
-        <activity android:name=".settings" />
+            android:parentActivityName=".userProfile"></activity>
+        <activity android:name=".userProfile" />
         <activity
             android:name=".LoginActivity"
             android:parentActivityName=".startActivity" />
@@ -52,16 +49,17 @@
             </intent-filter>
         </activity>
         <activity android:name=".chatActivity" />
-        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat"/>
-        <service android:name=".MyFirebaseMessagingService"
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+
+        <service
+            android:name=".MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-
         </service>
-
     </application>
 
 </manifest>

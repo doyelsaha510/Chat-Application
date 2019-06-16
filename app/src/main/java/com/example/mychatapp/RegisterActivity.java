@@ -12,6 +12,8 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -41,6 +43,8 @@ public class RegisterActivity extends AppCompatActivity {
     ProgressDialog progress;
     DatabaseReference uDatabase;
 
+    Animation upanimation;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +55,6 @@ public class RegisterActivity extends AppCompatActivity {
         passwd = findViewById(R.id.input_password);
         name = findViewById(R.id.input_name);
         btnSignUp = findViewById(R.id.btn_signup);
-
         progress = new ProgressDialog(this);
         mAuth = FirebaseAuth.getInstance();
         passwd.addTextChangedListener(new TextWatcher() {
@@ -156,6 +159,7 @@ public class RegisterActivity extends AppCompatActivity {
                                                 Intent mainIntent = new Intent(RegisterActivity.this, MainActivity.class);
                                                 mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                                 startActivity(mainIntent);
+
                                                 finish();
 
                                             }
