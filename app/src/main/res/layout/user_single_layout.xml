@@ -6,10 +6,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp">
+        android:layout_margin="5dp"
+        style="@style/Widget.MaterialComponents.CardView"
+        app:strokeColor="@color/colorPrimary"
+        app:strokeWidth="1dp"
+        android:padding="2dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -80,6 +84,6 @@
 
             </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </RelativeLayout>

@@ -4,60 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".userProfile"
-    android:orientation="vertical"
+    android:background="@drawable/background"
     android:gravity="center|top"
-    android:background="@drawable/background">
-    <com.mikhaellopez.circularimageview.CircularImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src="@drawable/defaultimage"
-        app:civ_border_color="#EEEEEE"
-        app:civ_border_width="4dp"
-        app:civ_shadow="true"
-        app:civ_shadow_radius="10"
-        app:civ_shadow_color="#8BC34A"
-        android:id="@+id/circular_image"
-        android:layout_marginTop="10dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textname"
-        android:text=""
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:layout_marginTop="25dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textstatus"
-        android:text=""
-        android:layout_marginTop="10dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"/>
-    <LinearLayout
+    android:orientation="vertical"
+    tools:context=".userProfile">
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.MaterialComponents.CardView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
-        <Button
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="2dp"
+        app:strokeColor="@color/colorPrimary"
+        app:strokeWidth="1dp">
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/circular_image"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/defaultimage"
+            app:civ_border_color="#EEEEEE"
+            app:civ_border_width="4dp"
+            app:civ_shadow="true"
+            app:civ_shadow_color="#8BC34A"
+            app:civ_shadow_radius="10" />
+
+        <TextView
+            android:id="@+id/textname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/change_status"
-            android:layout_marginBottom="5dp"
-            android:id="@+id/btnstatus"
-            android:background="@drawable/btnstyle"
-            android:layout_margin="5dp"
-            android:textColor="#153e7e"
-            />
+            android:layout_marginTop="25dp"
+            android:text=""
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-        <Button
-            android:id="@+id/btnimage"
+        <TextView
+            android:id="@+id/textstatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/change_image"
-            android:layout_margin="5dp"
-            android:background="@drawable/abtnstyle"
-            android:textColor="#153e7e"/>
+            android:layout_marginTop="10dp"
+            android:text=""
+            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle" />
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
 
+            <Button
+                android:id="@+id/btnstatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/btnstyle"
+                android:text="@string/change_status"
+                android:textColor="#153e7e" />
+
+            <Button
+                android:id="@+id/btnimage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/abtnstyle"
+                android:text="@string/change_image"
+                android:textColor="#153e7e" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

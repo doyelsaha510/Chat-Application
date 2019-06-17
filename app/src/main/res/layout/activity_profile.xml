@@ -39,9 +39,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="10dp"
                 android:text="name"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:textColorHighlight="#ffffff"/>
 
             <TextView
                 android:id="@+id/status"
@@ -49,14 +52,22 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="status"
-                android:textSize="20sp"
-                android:textStyle="italic" />
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:layout_marginTop="22dp"
+                android:textStyle="italic|bold" />
         </LinearLayout>
 
-        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:outlineSpotShadowColor="@color/cardview_shadow_end_color">
+            style="@style/Widget.MaterialComponents.CardView"
+            android:layout_marginLeft="@dimen/mtrl_card_spacing"
+            android:layout_marginTop="65dp"
+            android:layout_marginRight="@dimen/mtrl_card_spacing"
+            app:strokeColor="@color/colorPrimary"
+            app:strokeWidth="4dp"
+            >
 
             <LinearLayout
                 android:id="@+id/buttons"
@@ -65,14 +76,51 @@
                 android:layout_marginTop="15dp"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
 
-                    <ImageView
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/rightbtn"
+                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="65dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:backgroundTint="#00ff00"
+                        android:layout_gravity="center"
+                        android:text="Send friend request"
+                        android:textAlignment="center"
+                        android:theme="@style/Theme.MaterialComponents.NoActionBar"
+                        app:cornerRadius="10dp"
+                        app:icon="@drawable/done"
+                        app:iconGravity="textStart"
+                        app:iconPadding="20dp"
+                        app:iconSize="24dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:rippleColor="#fa78c4"
+                        />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/crossbtn"
+                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="65dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:backgroundTint="#bf0000"
+                        android:text="Decline friend request"
+                        android:textAlignment="center"
+                        android:layout_gravity="center"
+                        android:theme="@style/Theme.MaterialComponents.NoActionBar"
+                        app:cornerRadius="10dp"
+                        app:icon="@drawable/cross"
+                        app:iconGravity="textStart"
+                        app:iconPadding="20dp"
+                        app:iconSize="24dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:rippleColor="#fa78c4"
+                        />
+
+                 <!--   <ImageView
                         android:id="@+id/right"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
@@ -106,12 +154,13 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/crossbutton"
                         android:text="decline friend friend" />
+                        -->
                 </LinearLayout>
 
-            </LinearLayout>
 
 
-        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+
+        </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
 

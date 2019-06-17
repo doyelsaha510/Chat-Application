@@ -4,8 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.graphics.Color;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.os.Build;
@@ -20,6 +23,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -37,8 +41,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ProfileActivity extends AppCompatActivity {
     //CircularImageView dpimage;
     CircleImageView dpimage;
-    ImageView mright, mcross;
-    Button sendfq, declinefq;
+    MaterialButton sendfq, declinefq;
     TextView display_name, display_status;
     DatabaseReference UsersReference, FriendRequestReference, FriendsReference, NotificationsReference;
     ProgressDialog progressDialog;
@@ -48,6 +51,7 @@ public class ProfileActivity extends AppCompatActivity {
     String sender_userid;
     String receiver_user_id;
     LinearLayout linearLayout;
+    Context contextInstance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,8 +76,6 @@ public class ProfileActivity extends AppCompatActivity {
         UsersReference = FirebaseDatabase.getInstance().getReference().child("Users");
 
         dpimage = findViewById(R.id.profile);
-        mright = findViewById(R.id.right);
-        mcross = findViewById(R.id.cross);
         sendfq = findViewById(R.id.rightbtn);
         declinefq = findViewById(R.id.crossbtn);
         display_name = findViewById(R.id.name);
@@ -112,18 +114,15 @@ public class ProfileActivity extends AppCompatActivity {
                                                 .child("request_type").getValue().toString();
                                         if (req_type.equals("sent")) {
                                             current_State = "request_sent";
-                                            sendfq.setText("Cancel Friend Friend");
-                                            sendfq.setBackgroundResource(R.drawable.warningbutton);
-                                            mright.setImageResource(R.drawable.warning);
+                                            sendfq.setText("Cancel Friend Request");
+                                            sendfq.setIconResource(R.drawable.warning);
                                             declinefq.setVisibility(View.INVISIBLE);
-                                            mcross.setVisibility(View.INVISIBLE);
                                             declinefq.setEnabled(false);
 
 
                                         } else if (req_type.equals("received")) {
                                             current_State = "request_received";
                                             sendfq.setText("Accept Friend Friend");
-                                            mcross.setVisibility(View.VISIBLE);
                                             declinefq.setVisibility(View.VISIBLE);
                                             declinefq.setEnabled(true);
 
@@ -146,8 +145,7 @@ public class ProfileActivity extends AppCompatActivity {
                                                     if (dataSnapshot.hasChild(receiver_user_id)) {
                                                         current_State = "friends";
                                                         sendfq.setText("Unfriend This Person");
-                                                        sendfq.setBackgroundResource(R.drawable.warningbutton);
-                                                        mcross.setVisibility(View.INVISIBLE);
+                                                        sendfq.setIconResource(R.drawable.warning);
                                                         declinefq.setVisibility(View.INVISIBLE);
                                                         declinefq.setEnabled(false);
 
@@ -177,7 +175,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         declinefq.setVisibility(View.INVISIBLE);
         declinefq.setEnabled(false);
-        mcross.setVisibility(View.INVISIBLE);
+//        mcross.setVisibility(View.INVISIBLE);
 
 
         if (!sender_userid.equals(receiver_user_id)) {
@@ -225,8 +223,8 @@ public class ProfileActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 sendfq.setEnabled(true);
                                 current_State = "not_friend";
-                                sendfq.setText("Send Friend Friend");
-                                mcross.setVisibility(View.INVISIBLE);
+                                sendfq.setText("Send Friend Request");
+                                sendfq.setIconResource(R.drawable.right);
                                 declinefq.setVisibility(View.INVISIBLE);
                                 declinefq.setEnabled(false);
                             }
@@ -250,8 +248,8 @@ public class ProfileActivity extends AppCompatActivity {
                                             if (task.isSuccessful()) {
                                                 sendfq.setEnabled(true);
                                                 current_State = "not_friends";
-                                                sendfq.setText("Send Friend Friend");
-                                                mcross.setVisibility(View.INVISIBLE);
+                                                sendfq.setText("Send Friend Request");
+                                                sendfq.setIconResource(R.drawable.right);
                                                 declinefq.setVisibility(View.INVISIBLE);
                                                 declinefq.setEnabled(false);
                                             }
@@ -293,9 +291,7 @@ public class ProfileActivity extends AppCompatActivity {
                                                                 sendfq.setEnabled(true);
                                                                 current_State = "friends";
                                                                 sendfq.setText("Unfriend this person");
-                                                                sendfq.setBackgroundResource(R.drawable.warningbutton);
-                                                                mright.setImageResource(R.drawable.warning);
-                                                                mcross.setVisibility(View.INVISIBLE);
+                                                                sendfq.setIconResource(R.drawable.warning);
                                                                 declinefq.setVisibility(View.INVISIBLE);
                                                                 declinefq.setEnabled(false);
                                                             }
@@ -323,8 +319,8 @@ public class ProfileActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 sendfq.setEnabled(true);
                                 current_State = "not_friend";
-                                sendfq.setText("Send Friend Friend");
-                                mcross.setVisibility(View.INVISIBLE);
+                                sendfq.setText("Send Friend Request");
+                                sendfq.setIconResource(R.drawable.right);
                                 declinefq.setVisibility(View.INVISIBLE);
                                 declinefq.setEnabled(false);
                             }
@@ -362,10 +358,7 @@ public class ProfileActivity extends AppCompatActivity {
                                                                     sendfq.setEnabled(true);
                                                                     current_State = "request_sent";
                                                                     sendfq.setText("Cancel Friend Request");
-                                                                    sendfq.setBackgroundResource(R.drawable.warningbutton);
-                                                                    mright.setImageResource(R.drawable.warning);
-                                                                    mcross.setVisibility(View.INVISIBLE);
-
+                                                                    sendfq.setIconResource(R.drawable.warning);
                                                                     declinefq.setVisibility(View.INVISIBLE);
                                                                     declinefq.setEnabled(false);
                                                                 }
