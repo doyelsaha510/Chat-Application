@@ -23,43 +23,31 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/defaultimage" />
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/img_on"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_below="@+id/username"
-                android:layout_marginTop="28dp"
-                android:layout_toEndOf="@+id/profile_image"
-                android:layout_toRightOf="@+id/profile_image"
-                android:src="@mipmap/ic_launcher"
-                android:visibility="invisible"
-                app:civ_border_color="#05df29"
-                app:civ_border_width="10dp"
-                tools:ignore="RtlHardcoded" />
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/img_off"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_below="@+id/username"
-                android:layout_marginTop="28dp"
-                android:layout_toEndOf="@+id/profile_image"
-                android:layout_toRightOf="@+id/profile_image"
-                android:src="@mipmap/ic_launcher"
-                android:visibility="invisible"
-                app:civ_border_color="#bfbfbf"
-                app:civ_border_width="10dp"
-                tools:ignore="RtlHardcoded" />
-
-            <TextView
-                android:id="@+id/username"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:textColor="#ffffff"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"
+                    android:text="he"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/last_seen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp"
+                    android:text="last seen"
+                    />
+            </LinearLayout>
+
+
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -127,16 +115,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorPrimary"
-            android:src="@drawable/ic_send" />
+            android:src="@drawable/ic_send"
+            android:id="@+id/send"/>
 
-        <!--  <ImageButton
+         <!--<ImageButton
               android:id="@+id/send_btn"
               android:layout_width="60dp"
               android:layout_height="wrap_content"
               android:src="@drawable/ic_send"
               android:layout_alignParentEnd="true"
               android:foregroundGravity="center"
-              android:backgroundTint="@android:color/white"
+
               />-->
 
     </LinearLayout>

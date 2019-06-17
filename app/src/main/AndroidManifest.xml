@@ -18,7 +18,9 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:appComponentFactory"
-        tools:targetApi="p">
+        tools:targetApi="p"
+        android:hardwareAccelerated="false"
+        android:largeHeap="true">
         <activity android:name=".settings"></activity>
         <activity android:name=".ProfileActivity">
             <intent-filter>
