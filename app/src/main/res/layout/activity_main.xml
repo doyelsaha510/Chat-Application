@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/appbar"
-        android:background="#e39ff6">
+        android:background="#ffffff">
 
         <include layout="@layout/app_bar_layout" android:id="@+id/mainpage_toolbar"/>
 

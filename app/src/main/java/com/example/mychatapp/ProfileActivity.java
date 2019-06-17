@@ -24,6 +24,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -47,6 +48,7 @@ public class ProfileActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     String current_State;
     private FirebaseAuth mAuth;
+    MaterialCardView cardViewbtn;
     FirebaseUser firebaseCurrUser;
     String sender_userid;
     String receiver_user_id;
@@ -80,7 +82,7 @@ public class ProfileActivity extends AppCompatActivity {
         declinefq = findViewById(R.id.crossbtn);
         display_name = findViewById(R.id.name);
         display_status = findViewById(R.id.status);
-        linearLayout = findViewById(R.id.buttons);
+        cardViewbtn = findViewById(R.id.buttons);
         current_State = "not_friends";
 
         progressDialog = new ProgressDialog(this);
@@ -202,7 +204,7 @@ public class ProfileActivity extends AppCompatActivity {
                 }
             });
         } else {
-            linearLayout.setVisibility(View.INVISIBLE);
+            cardViewbtn.setVisibility(View.INVISIBLE);
             declinefq.setVisibility(View.INVISIBLE);
             sendfq.setVisibility(View.INVISIBLE);
         }

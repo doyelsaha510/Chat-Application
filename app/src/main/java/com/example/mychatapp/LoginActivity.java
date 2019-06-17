@@ -56,6 +56,14 @@ public class LoginActivity extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(this);
 
+        forgot_pass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(LoginActivity.this,reset_password.class);
+                startActivity(intent);
+            }
+        });
+
 
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override

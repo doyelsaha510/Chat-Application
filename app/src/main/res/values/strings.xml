@@ -11,6 +11,6 @@
     <string name="name">Name</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="save_changes">save changes</string>
-    <string name="change_status">change status</string>
-    <string name="change_image">change image</string>
+    <string name="change_status">status</string>
+    <string name="change_image">image</string>
 </resources>

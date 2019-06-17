@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -34,7 +35,7 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 public class userProfile extends AppCompatActivity {
     TextView uname, ustatus;
-    Button btnstatus, btnimage;
+    MaterialButton btnstatus, btnimage;
     ProgressDialog progressDialog;
     DatabaseReference databaseReference;
     FirebaseUser firebaseUser;

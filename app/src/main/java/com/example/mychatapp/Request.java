@@ -1,6 +1,7 @@
 package com.example.mychatapp;
 
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -132,8 +134,9 @@ public class Request extends Fragment {
                             public void onClick(View view) {
                                 String visit_userid = getRef(i).getKey();
                                 Intent profileintent = new Intent(getContext(), ProfileActivity.class);
+                                ActivityOptions options1= (ActivityOptions) ActivityOptions.makeSceneTransitionAnimation(getActivity(), new Pair[]{Pair.create(view, "imagetransition")});
                                 profileintent.putExtra("visit_userid", visit_userid);
-                                startActivity(profileintent);
+                                startActivity(profileintent,options1.toBundle());
                             }
                         });
 

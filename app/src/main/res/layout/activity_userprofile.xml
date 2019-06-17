@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    android:gravity="center|top"
+android:background="@drawable/backgroundn"
+    android:gravity="center"
     android:orientation="vertical"
     tools:context=".userProfile">
 
@@ -14,63 +14,111 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:padding="2dp"
+        android:padding="3dp"
         app:strokeColor="@color/colorPrimary"
-        app:strokeWidth="1dp">
-
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/circular_image"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/defaultimage"
-            app:civ_border_color="#EEEEEE"
-            app:civ_border_width="4dp"
-            app:civ_shadow="true"
-            app:civ_shadow_color="#8BC34A"
-            app:civ_shadow_radius="10" />
-
-        <TextView
-            android:id="@+id/textname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text=""
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-        <TextView
-            android:id="@+id/textstatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text=""
-            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle" />
+        app:strokeWidth="1dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardCornerRadius="23dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btnstatus"
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/circular_image"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/defaultimage"
+                app:civ_border_color="#EEEEEE"
+                app:civ_border_width="4dp"
+                app:civ_shadow="true"
+                app:civ_shadow_color="#8BC34A"
+                app:civ_shadow_radius="10" />
+
+            <TextView
+                android:id="@+id/textname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_marginBottom="5dp"
-                android:background="@drawable/btnstyle"
-                android:text="@string/change_status"
-                android:textColor="#153e7e" />
+                android:layout_marginTop="25dp"
+                android:text=""
+                android:layout_gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-            <Button
-                android:id="@+id/btnimage"
+            <TextView
+                android:id="@+id/textstatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="@drawable/abtnstyle"
-                android:text="@string/change_image"
-                android:textColor="#153e7e" />
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnstatus"
+
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_margin="5dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="5dp"
+
+                    android:text="@string/change_status"
+                    android:textAlignment="center"
+                    android:textColor="#153e7e"
+                    android:theme="@style/Theme.MaterialComponents.NoActionBar"
+                    app:cornerRadius="10dp"
+                    app:icon="@drawable/ic_edit_black_24dp"
+                    app:iconGravity="textStart"
+                    app:iconPadding="20dp"
+                    app:iconSize="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:rippleColor="#fa78c4" />
+
+                <com.google.android.material.button.MaterialButton
+
+
+                    android:id="@+id/btnimage"
+
+
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+
+                    android:layout_margin="5dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/abtnstyle"
+                    android:text="@string/change_image"
+                    android:textAlignment="center"
+                    android:textColor="#153e7e"
+                    android:theme="@style/Theme.MaterialComponents.NoActionBar"
+                    app:cornerRadius="10dp"
+                    app:icon="@drawable/ic_camera_alt_black_24dp"
+                    app:iconGravity="textStart"
+                    app:iconPadding="20dp"
+                    app:iconSize="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:rippleColor="#fa78c4" />
+
+            </LinearLayout>
         </LinearLayout>
+
     </com.google.android.material.card.MaterialCardView>
 </LinearLayout>
