@@ -32,8 +32,11 @@ import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ProfileActivity extends AppCompatActivity {
-    CircularImageView dpimage;
+    //CircularImageView dpimage;
+    CircleImageView dpimage;
     ImageView mright, mcross;
     Button sendfq, declinefq;
     TextView display_name, display_status;
