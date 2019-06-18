@@ -77,7 +77,7 @@
             android:layout_weight="1"
             android:background="@drawable/chatedittext">
 
-            <ImageButton
+<!--            <ImageButton
                 android:id="@+id/send_files_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
@@ -93,7 +93,7 @@
                 android:background="@drawable/chatedittext"
                 android:backgroundTintMode="multiply"
                 />
-
+-->
 
             <EditText
                 android:id="@+id/input_msg"
@@ -117,16 +117,6 @@
             android:backgroundTint="@color/colorPrimary"
             android:src="@drawable/ic_send"
             android:id="@+id/send"/>
-
-         <!--<ImageButton
-              android:id="@+id/send_btn"
-              android:layout_width="60dp"
-              android:layout_height="wrap_content"
-              android:src="@drawable/ic_send"
-              android:layout_alignParentEnd="true"
-              android:foregroundGravity="center"
-
-              />-->
 
     </LinearLayout>
 

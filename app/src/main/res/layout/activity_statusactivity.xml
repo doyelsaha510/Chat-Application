@@ -16,7 +16,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:padding="10dp">
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/statusvalue"
@@ -25,16 +25,27 @@
             android:layout_margin="10dp"
             android:maxLength="200"/>
     </com.google.android.material.textfield.TextInputLayout>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/changestatus"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:text="@string/save_changes"
-        android:padding="10dp"
+        android:textAlignment="center"
+        android:theme="@style/Theme.MaterialComponents.NoActionBar"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/done"
+        app:iconGravity="textStart"
+        app:iconPadding="20dp"
+        app:iconSize="24dp"
         android:layout_margin="10dp"
-        android:layout_gravity="right"
-        android:background="@drawable/btnstyle"
-        tools:ignore="RtlHardcoded"
-        android:textColor="#153e7e"/>
+        android:layout_gravity="end"
+        app:rippleColor="#fa78c4"
+        app:strokeColor="@color/colorAccent"
+        app:strokeWidth="2dp"/>
 
 </LinearLayout>
