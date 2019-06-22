@@ -75,7 +75,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:backgroundTint="#8e356e"
+            android:backgroundTint="#F16889"
             android:text="Login"
             android:textAlignment="center"
             android:theme="@style/Theme.MaterialComponents.NoActionBar"
@@ -86,7 +86,7 @@
             app:iconSize="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:rippleColor="#fa78c4" />
+            app:rippleColor="#114D84" />
 
     </LinearLayout>
 

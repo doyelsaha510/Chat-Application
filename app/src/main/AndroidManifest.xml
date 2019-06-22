@@ -22,7 +22,6 @@
         tools:replace="android:appComponentFactory"
         tools:targetApi="p">
         <activity android:name=".reset_password"></activity>
-        <activity android:name=".settings" />
         <activity android:name=".ProfileActivity">
             <intent-filter>
                 <action android:name="com.example.mychatapp_TARGET_NOTIFICATION" />

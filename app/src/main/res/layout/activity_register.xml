@@ -88,7 +88,7 @@
         android:layout_height="65dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:backgroundTint="#8e356e"
+        android:backgroundTint="#06D6A0"
         android:text="Register"
         android:textAlignment="center"
         android:theme="@style/Theme.MaterialComponents.NoActionBar"
@@ -99,7 +99,7 @@
         app:iconSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:rippleColor="#fa78c4" />
+        app:rippleColor="#F16889" />
 
 
     </LinearLayout>

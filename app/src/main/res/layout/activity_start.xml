@@ -26,7 +26,7 @@
         android:text="MYCHATAPP"
         android:layout_centerInParent="true"
         android:textAllCaps="true"
-        android:textColor="#ffffff"
+        android:textColor="#30323D"
         android:textSize="22sp" />
 
     <RelativeLayout

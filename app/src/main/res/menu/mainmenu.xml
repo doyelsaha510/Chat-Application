@@ -12,10 +12,7 @@
         android:icon="@drawable/userout"
         android:title="All Users" />
 
-    <item
-        android:id="@+id/settings"
-        android:icon="@drawable/ic_settings_out"
-        android:title="Settings" />
+
 
     <item
         android:id="@+id/logout"

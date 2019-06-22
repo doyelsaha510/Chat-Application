@@ -105,27 +105,27 @@ public class MainActivity extends AppCompatActivity {
             retext.setTextColor(getColor(R.color.colorAccent));
             retext.setTextSize(22);
 
-            chtext.setTextColor(getColor(R.color.colorPrimary));
+            chtext.setTextColor(getColor(R.color.colorPrimarydark));
             chtext.setTextSize(18);
 
-            frtext.setTextColor(getColor(R.color.colorPrimary));
+            frtext.setTextColor(getColor(R.color.colorPrimarydark));
             frtext.setTextSize(18);
         }
         if (position == 1) {
-            retext.setTextColor(getColor(R.color.colorPrimary));
+            retext.setTextColor(getColor(R.color.colorPrimarydark));
             retext.setTextSize(18);
 
             chtext.setTextColor(getColor(R.color.colorAccent));
             chtext.setTextSize(22);
 
-            frtext.setTextColor(getColor(R.color.colorPrimary));
+            frtext.setTextColor(getColor(R.color.colorPrimarydark));
             frtext.setTextSize(18);
         }
         if (position == 2) {
-            retext.setTextColor(getColor(R.color.colorPrimary));
+            retext.setTextColor(getColor(R.color.colorPrimarydark));
             retext.setTextSize(18);
 
-            chtext.setTextColor(getColor(R.color.colorPrimary));
+            chtext.setTextColor(getColor(R.color.colorPrimarydark));
             chtext.setTextSize(18);
 
             frtext.setTextColor(getColor(R.color.colorAccent));
@@ -169,14 +169,11 @@ public class MainActivity extends AppCompatActivity {
             updateUserStatus("offline");
             FirebaseAuth.getInstance().signOut();
             sendTostart();
-        } else if (item.getItemId() == R.id.userProfile) {
+        } if (item.getItemId() == R.id.userProfile) {
             Intent intent = new Intent(MainActivity.this, userProfile.class);
             startActivity(intent);
-        } else if (item.getItemId() == R.id.alluser) {
+        } if(item.getItemId() == R.id.alluser) {
             Intent uintent = new Intent(MainActivity.this, allusers.class);
-            startActivity(uintent);
-        } else {
-            Intent uintent = new Intent(MainActivity.this, settings.class);
             startActivity(uintent);
         }
         return true;
