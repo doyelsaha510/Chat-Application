@@ -12,8 +12,6 @@
         android:icon="@drawable/userout"
         android:title="All Users" />
 
-
-
     <item
         android:id="@+id/logout"
         android:icon="@drawable/logout"
